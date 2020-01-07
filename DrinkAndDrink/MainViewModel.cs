@@ -18,6 +18,8 @@ namespace DrinkAndDrink
             set { Set(() => CurrentUser, ref currentUser, value); }
         }
         public MainViewModel() {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
         }
     }
 }
