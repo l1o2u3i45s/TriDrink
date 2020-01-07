@@ -14,7 +14,7 @@ namespace DrinkAndDrink.DataBase
     {
         public static IMongoCollection<User> userTable = MongoConnection.GetUserTable();
         public static bool Login(User _user) {  
-            var filter = 
+            var filter =
                 Builders<User>.Filter.Eq(u => u.Account, _user.Account) & 
                 Builders<User>.Filter.Eq(u => u.PassWord, _user.PassWord);
 

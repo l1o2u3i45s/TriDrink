@@ -1,4 +1,5 @@
-﻿using DrinkAndDrink.DataBase;
+﻿using DrinkAndDrink.Class.User;
+using DrinkAndDrink.DataBase;
 using GalaSoft.MvvmLight;
 using MongoDB.Driver;
 using System;
@@ -11,6 +12,11 @@ namespace DrinkAndDrink
 {
     public class MainViewModel:ViewModelBase
     {
+        private User currentUser;
+        public User CurrentUser {
+            get { return currentUser; }
+            set { Set(() => CurrentUser, ref currentUser, value); }
+        }
         public MainViewModel() {
         }
     }
