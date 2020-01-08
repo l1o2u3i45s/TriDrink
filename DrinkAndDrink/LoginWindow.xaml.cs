@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DrinkAndDrink.Class.User;
+using DrinkAndDrink.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,28 @@ namespace DrinkAndDrink
         public LoginWindow()
         {
             InitializeComponent();
+        } 
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            User loginUser = new User() {Account= txtAccount.Text,PassWord = txtPassword.Text };
+            if (UserCollection.Login(loginUser)) {
+                Hide();
+                new MainWindow(loginUser).Show(); 
+            } 
+            else
+                MessageBox.Show("登入失敗~");
+        }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            User loginUser = new User() { Account = txtAccount.Text, PassWord = txtPassword.Text };
+            if (UserCollection.Register(loginUser))
+            {
+                Hide();
+                new MainWindow(loginUser).Show();
+            }
+            else
+                MessageBox.Show("註冊失敗~已經辦過帳號惹~");
         }
     }
 }

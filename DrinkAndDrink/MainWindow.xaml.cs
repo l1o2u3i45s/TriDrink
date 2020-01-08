@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommonServiceLocator;
+using DrinkAndDrink.Class.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace DrinkAndDrink
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+            ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = user;
+            DataContext = ServiceLocator.Current.GetInstance<MainViewModel>();  
         }
     }
 }
