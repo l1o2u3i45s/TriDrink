@@ -22,10 +22,15 @@ namespace DrinkAndDrink
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(User user)
+        public MainWindow()
         {
             InitializeComponent(); 
-            ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = user; 
+            
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Owner.Close();
         }
     }
 }

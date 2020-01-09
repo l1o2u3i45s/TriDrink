@@ -1,4 +1,5 @@
-﻿using DrinkAndDrink.Class.Activity;
+﻿using CommonServiceLocator;
+using DrinkAndDrink.Class.Activity;
 using DrinkAndDrink.Class.User;
 using DrinkAndDrink.DataBase;
 using GalaSoft.MvvmLight;
@@ -28,6 +29,18 @@ namespace DrinkAndDrink
         {
             get { return activityCollection; }
             set { Set(() => ActivityCollection, ref activityCollection, value); }
+        }
+        public ICommand OpenOrderWindowCommand
+        {
+            get
+            {
+                return new RelayCommand<string>((id) =>
+                {
+                    ServiceLocator.Current.GetInstance<OrderWindow.OrderVIewModel>().ActivityID = id; 
+                    OrderWindow.OrderWindow orderWindow = new OrderWindow.OrderWindow();
+                    orderWindow.ShowDialog();
+                });
+            }
         }
         public MainViewModel( )  {
              

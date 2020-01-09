@@ -1,4 +1,5 @@
-﻿using DrinkAndDrink.Class.User;
+﻿using CommonServiceLocator;
+using DrinkAndDrink.Class.User;
 using DrinkAndDrink.DataBase;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,9 @@ namespace DrinkAndDrink
         {
             User loginUser = new User() {Account= txtAccount.Text,PassWord = txtPassword.Text };
             if (UserCollection.Login(loginUser)) {
-                Hide();
-                new MainWindow(loginUser).Show(); 
+                Hide(); 
+                ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
+                new MainWindow() { Owner = this }.Show();
             } 
             else
                 MessageBox.Show("登入失敗~");
@@ -42,7 +44,8 @@ namespace DrinkAndDrink
             if (UserCollection.Register(loginUser))
             {
                 Hide();
-                new MainWindow(loginUser).Show();
+                ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
+                new MainWindow() { Owner = this }.Show();
             }
             else
                 MessageBox.Show("註冊失敗~已經辦過帳號惹~");

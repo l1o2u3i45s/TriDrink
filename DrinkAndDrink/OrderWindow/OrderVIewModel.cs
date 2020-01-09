@@ -10,7 +10,17 @@ using System.Threading.Tasks;
 namespace DrinkAndDrink.OrderWindow
 {
    public class OrderVIewModel : ViewModelBase
-    {
+    { 
+        private string activityID;
+        public string ActivityID
+        {
+            get { return activityID; }
+            set { Set(() => ActivityID, ref activityID, value);
+                if (!string.IsNullOrEmpty(value)) {
+                    //撈Activity資料
+                } 
+            }
+        }
         private ShopEnum selectedShop;
         public ShopEnum SelectedShop
         {

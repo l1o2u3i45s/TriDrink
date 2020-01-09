@@ -7,7 +7,7 @@
         mc:Ignorable="d" 
         Background="{StaticResource AccordionBackgroundBrush}" WindowStartupLocation="CenterScreen"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="TriDrink" Height="450" Width="800" > 
+        Title="TriDrink" Height="650" Width="1000" Closed="Window_Closed"> 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -20,13 +20,14 @@
 
         <Grid Grid.Row="0" Grid.Column="0" Margin="10" Background="{StaticResource AccordionArrowBackgroundBrush}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <DockPanel  >
-                <Label Content="要不要喝飲料?" Foreground="Black" />
+                <Label Content="要不要喝飲料?" FontSize="25" Foreground="Black" />
                 <Rectangle Width="0"/>
-                <Button Content="+" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,2"/>
+                <Button Command="{Binding OpenOrderWindowCommand}" CommandParameter=""
+                        Content="+" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,2"/>
             </DockPanel>
             <DataGrid Grid.Row="1"   Background="{StaticResource Brush04}">
                  
@@ -39,7 +40,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <Label Content="訂飲料Der人" Foreground="Black" />
+                <Label Content="訂飲料Der人" FontSize="25" Foreground="Black" />
             </StackPanel> 
         </Grid>
 
@@ -49,7 +50,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <Label Content="菜單" Foreground="Black" />
+                <Label Content="菜單" FontSize="25" Foreground="Black" />
             </StackPanel>
         </Grid>
 
