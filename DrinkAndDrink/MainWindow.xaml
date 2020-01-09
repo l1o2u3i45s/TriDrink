@@ -5,10 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DrinkAndDrink"
         mc:Ignorable="d" 
+        Background="{StaticResource AccordionBackgroundBrush}" WindowStartupLocation="CenterScreen"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="MainWindow" Height="450" Width="800" >
-     
+        Title="TriDrink" Height="450" Width="800" > 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10" Background="{StaticResource AccordionArrowBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel  >
+                <Label Content="要不要喝飲料?" Foreground="Black" />
+                <Rectangle Width="0"/>
+                <Button Content="+" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,2"/>
+            </DockPanel>
+            <DataGrid Grid.Row="1"   Background="{StaticResource Brush04}">
+                 
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10" Background="{StaticResource AccordionArrowBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Label Content="訂飲料Der人" Foreground="Black" />
+            </StackPanel> 
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0,10,10,10" Background="{StaticResource AccordionArrowBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Label Content="菜單" Foreground="Black" />
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

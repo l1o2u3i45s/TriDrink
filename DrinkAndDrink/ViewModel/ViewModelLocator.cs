@@ -13,6 +13,7 @@
 */
 
 using CommonServiceLocator;
+using DrinkAndDrink.OrderWindow;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
@@ -43,7 +44,8 @@ namespace DrinkAndDrink.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>(); 
+            SimpleIoc.Default.Register<OrderVIewModel>(); 
         }
 
         public MainViewModel Main
@@ -53,7 +55,13 @@ namespace DrinkAndDrink.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+        public OrderVIewModel OrderVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<OrderVIewModel>();
+            }
+        }
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

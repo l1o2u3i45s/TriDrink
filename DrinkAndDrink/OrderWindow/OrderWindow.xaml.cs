@@ -1,6 +1,4 @@
-﻿using CommonServiceLocator;
-using DrinkAndDrink.Class.User;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DrinkAndDrink
+namespace DrinkAndDrink.OrderWindow
 {
     /// <summary>
-    /// MainWindow.xaml 的互動邏輯
+    /// OrderWindow.xaml 的互動邏輯
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderWindow : Window
     {
-        public MainWindow(User user)
+        public OrderWindow()
         {
-            InitializeComponent(); 
-            ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = user; 
+            InitializeComponent();
         }
     }
 }
