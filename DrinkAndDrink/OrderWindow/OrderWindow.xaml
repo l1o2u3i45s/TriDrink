@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:DrinkAndDrink.OrderWindow"
         xmlns:drinkclass="clr-namespace:DrinkAndDrink.Class"
         mc:Ignorable="d"
+        DataContext="{Binding OrderVM,Source={StaticResource Locator}}"
         Background="{StaticResource AccordionBackgroundBrush}"
-        Title="OrderWindow" Height="250" Width="350">
+        Title="活動設定" Height="250" Width="350">
     <Window.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource LabelStyle}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -28,7 +29,7 @@
         <Label Grid.Row="0" Content="要喝哪家?"/>
         <ComboBox Grid.Column="1" Margin="10" ItemsSource="{Binding ShopCollecttion}" SelectedItem="{Binding SelectedShop}" />
         <Label Grid.Row="1" Content="幾點訂?"/>
-        <DatePicker SelectedDate="{Binding SelectedTime}" Grid.Row="1" Grid.Column="1" Margin="10"/>
+        <ComboBox SelectedIndex="0" ItemsSource="{Binding TimeCollecttion}" SelectedItem="{Binding SelectedTime}"  Grid.Row="1" Grid.Column="1" Margin="10"/>
         <Button Content="儲存" Grid.Column="1" Grid.Row="2" FontSize="25" Margin="10"/>
     </Grid>
 </Window>

@@ -8,7 +8,8 @@ namespace DrinkAndDrink.Class.Activity
 {
     public static class ActivityFactory
     {
-        public static DrinkActivity DrinkFactory() {
+        public static DrinkActivity DrinkFactory(string id) {
+
             return new DrinkActivity();
         }
     }

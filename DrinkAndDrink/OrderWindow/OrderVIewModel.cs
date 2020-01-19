@@ -1,4 +1,5 @@
 ﻿using DrinkAndDrink.Class;
+using DrinkAndDrink.Class.Activity;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,12 @@ using System.Threading.Tasks;
 namespace DrinkAndDrink.OrderWindow
 {
    public class OrderVIewModel : ViewModelBase
-    { 
-        private string activityID;
-        public string ActivityID
+    {  
+        private iActivity activityItem;
+        public iActivity ActivityItem
         {
-            get { return activityID; }
-            set { Set(() => ActivityID, ref activityID, value);
-                if (!string.IsNullOrEmpty(value)) {
-                    //撈Activity資料
-                } 
-            }
+            get { return activityItem; }
+            set { Set(() => ActivityItem, ref activityItem, value); }
         }
         private ShopEnum selectedShop;
         public ShopEnum SelectedShop
@@ -27,20 +24,30 @@ namespace DrinkAndDrink.OrderWindow
             get { return selectedShop; }
             set { Set(() => SelectedShop, ref selectedShop, value); }
         }
-        private ObservableCollection<ShopEnum> shopCollecttion;
-        public ObservableCollection<ShopEnum> ShopCollecttion
-        {
-            get { return shopCollecttion; }
-            set { Set(() => ShopCollecttion, ref shopCollecttion, value); }
-        }
-        private DateTime selectedTime = DateTime.Now.AddHours(2);
-        public DateTime SelectedTime
+        private int selectedTime;
+        public int SelectedTime
         {
             get { return selectedTime; }
             set { Set(() => SelectedTime, ref selectedTime, value); }
         }
+        public List<ShopEnum> ShopCollecttion { get; } = new List<ShopEnum>() { ShopEnum.FiftyLan, ShopEnum.KanChingLong };
+        public List<DateTime> TimeCollecttion {
+            get { return RealTimeIterator().ToList(); }
+        }  
+         
         public OrderVIewModel() {
-            ShopCollecttion = new ObservableCollection<ShopEnum>() {ShopEnum.FiftyLan,ShopEnum.KanChingLong };
+            
+            
+        }
+        public IEnumerable<DateTime> RealTimeIterator() {
+            var time = DateTime.Now.AddHours(1);
+            while (true)
+            {
+                yield return time;
+                time = time.AddHours(1);
+                if (time.Hour > 18 || DateTime.Now.Hour > 18)
+                    break;
+            } 
         }
     }
 }

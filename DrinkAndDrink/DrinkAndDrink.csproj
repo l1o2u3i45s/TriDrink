@@ -113,6 +113,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataBase\ActivityCollection.cs" />
     <Compile Include="DataBase\MongoConnection.cs" />
     <Compile Include="DataBase\UserCollection.cs" />
     <Compile Include="LoginWindow.xaml.cs">

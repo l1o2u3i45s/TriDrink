@@ -36,7 +36,7 @@ namespace DrinkAndDrink
             {
                 return new RelayCommand<string>((id) =>
                 {
-                    ServiceLocator.Current.GetInstance<OrderWindow.OrderVIewModel>().ActivityID = id; 
+                    ServiceLocator.Current.GetInstance<OrderWindow.OrderVIewModel>().ActivityItem = ActivityFactory.DrinkFactory(id); 
                     OrderWindow.OrderWindow orderWindow = new OrderWindow.OrderWindow();
                     orderWindow.ShowDialog();
                 });
