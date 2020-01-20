@@ -1,12 +1,14 @@
 ﻿using DrinkAndDrink.Class;
 using DrinkAndDrink.Class.Activity;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DrinkAndDrink.OrderWindow
 {
@@ -33,8 +35,10 @@ namespace DrinkAndDrink.OrderWindow
         public List<ShopEnum> ShopCollecttion { get; } = new List<ShopEnum>() { ShopEnum.FiftyLan, ShopEnum.KanChingLong };
         public List<DateTime> TimeCollecttion {
             get { return RealTimeIterator().ToList(); }
-        }  
-         
+        }
+        public ICommand UpdateActivityCommand {
+            get { return new RelayCommand(() => LineNotifyBot.GetUserCode()); }
+        }
         public OrderVIewModel() {
             
             

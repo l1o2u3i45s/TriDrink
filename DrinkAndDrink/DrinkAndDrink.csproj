@@ -116,6 +116,10 @@
     <Compile Include="DataBase\ActivityCollection.cs" />
     <Compile Include="DataBase\MongoConnection.cs" />
     <Compile Include="DataBase\UserCollection.cs" />
+    <Compile Include="LineNotifyBot.cs" />
+    <Compile Include="LineNotifyWeb\LineNotifyWebWindow.xaml.cs">
+      <DependentUpon>LineNotifyWebWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +129,10 @@
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="LineNotifyWeb\LineNotifyWebWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Themes\MetroDark\HowToApplyTheme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="InvitedQRCode.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />

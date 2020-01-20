@@ -30,6 +30,6 @@
         <ComboBox Grid.Column="1" Margin="10" ItemsSource="{Binding ShopCollecttion}" SelectedItem="{Binding SelectedShop}" />
         <Label Grid.Row="1" Content="幾點訂?"/>
         <ComboBox SelectedIndex="0" ItemsSource="{Binding TimeCollecttion}" SelectedItem="{Binding SelectedTime}"  Grid.Row="1" Grid.Column="1" Margin="10"/>
-        <Button Content="儲存" Grid.Column="1" Grid.Row="2" FontSize="25" Margin="10"/>
+        <Button Content="儲存" Command="{Binding UpdateActivityCommand}" Grid.Column="1" Grid.Row="2" FontSize="25" Margin="10"/>
     </Grid>
 </Window>
