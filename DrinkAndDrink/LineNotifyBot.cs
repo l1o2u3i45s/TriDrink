@@ -1,4 +1,5 @@
 ﻿using DrinkAndDrink.LineNotifyWeb;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -43,7 +44,7 @@ namespace DrinkAndDrink
 
             //LineNotifyWebWindow web = new LineNotifyWebWindow();
             //web.ChromiumWebBrowser.Address = url;
-           await GetAccessTokenAsync("DSC3uZOhiPyAaq1e3PRTnc");
+           await GetAccessTokenAsync("HAZJRkyezdoyt4R1KE2F3O");
             
         }
         public static async Task GetAccessTokenAsync(string code)
@@ -60,8 +61,9 @@ namespace DrinkAndDrink
             });
 
             var myHttpClient = new HttpClient();
-            var response = await myHttpClient.PostAsync(url, formContent);
-            var stringContent = await response.Content.ReadAsStringAsync();
+            var response = await myHttpClient.PostAsync(url, formContent); 
+            dynamic data = JObject.Parse(await response.Content.ReadAsStringAsync());
+            var a= data.access_token;
         }
 
     }
