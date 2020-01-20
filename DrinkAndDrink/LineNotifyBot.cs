@@ -1,8 +1,12 @@
 ﻿using DrinkAndDrink.LineNotifyWeb;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -29,7 +33,7 @@ namespace DrinkAndDrink
                 dataStream.Write(byteArray, 0, byteArray.Length);
             }
         }
-        public static void GetUserCode()
+        public static async Task GetUserCode()
         {
             string url = @"https://notify-bot.line.me/oauth/authorize?
                 response_type=code
@@ -37,10 +41,29 @@ namespace DrinkAndDrink
                 &client_id=	0t0WbPzcpYkAh8Zkvuv5St
                 &redirect_uri=https://github.com/l1o2u3i45s/TriDrink";
 
-            LineNotifyWebWindow web = new LineNotifyWebWindow(); 
-            web.webbrowser.Navigate( new Uri(url));
-            web.ShowDialog();
+            //LineNotifyWebWindow web = new LineNotifyWebWindow();
+            //web.ChromiumWebBrowser.Address = url;
+           await GetAccessTokenAsync("DSC3uZOhiPyAaq1e3PRTnc");
+            
         }
+        public static async Task GetAccessTokenAsync(string code)
+        {
+            string url = @"https://notify-bot.line.me/oauth/token";
+           
+            var formContent = new FormUrlEncodedContent(new[]
+            {
+            new KeyValuePair<string, string>("grant_type", "authorization_code"),
+            new KeyValuePair<string, string>("code",code),
+            new KeyValuePair<string, string>("redirect_uri", "https://github.com/l1o2u3i45s/TriDrink"),
+            new KeyValuePair<string, string>("client_id", "0t0WbPzcpYkAh8Zkvuv5St"),
+            new KeyValuePair<string, string>("client_secret", "jD6vMAgkHJ2scusFs2cJ94A4fPX6HHljAtkviEpaCGe")
+            });
+
+            var myHttpClient = new HttpClient();
+            var response = await myHttpClient.PostAsync(url, formContent);
+            var stringContent = await response.Content.ReadAsStringAsync();
+        }
+
     }
     
 }

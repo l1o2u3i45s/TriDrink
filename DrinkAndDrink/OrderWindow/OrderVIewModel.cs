@@ -37,7 +37,7 @@ namespace DrinkAndDrink.OrderWindow
             get { return RealTimeIterator().ToList(); }
         }
         public ICommand UpdateActivityCommand {
-            get { return new RelayCommand(() => LineNotifyBot.GetUserCode()); }
+            get { return new RelayCommand(() =>  LineNotifyBot.GetUserCode()); }
         }
         public OrderVIewModel() {
             
