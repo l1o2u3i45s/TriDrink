@@ -1,5 +1,6 @@
 ﻿using CommonServiceLocator;
 using DrinkAndDrink.Class.Activity;
+using DrinkAndDrink.Class.Shop;
 using DrinkAndDrink.Class.User;
 using DrinkAndDrink.DataBase;
 using GalaSoft.MvvmLight;
@@ -29,6 +30,10 @@ namespace DrinkAndDrink
         {
             get { return activityCollection; }
             set { Set(() => ActivityCollection, ref activityCollection, value); }
+        } 
+        public List<iShop> ShopCollection
+        {
+            get { return ShopFactory.GetAllDrinkShopData().ToList(); } 
         }
         public ICommand OpenOrderWindowCommand
         {

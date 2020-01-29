@@ -52,6 +52,7 @@
             <StackPanel>
                 <Label Content="菜單" FontSize="25" Foreground="Black" />
             </StackPanel>
+            <DataGrid Grid.Row="1" ItemsSource="{Binding ShopCollection}" />
         </Grid>
 
     </Grid>

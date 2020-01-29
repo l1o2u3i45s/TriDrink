@@ -18,10 +18,18 @@ namespace DrinkAndDrink.DataBase
 
             return userTable.Find(filter).ToList().Count > 0;
         }
-        public static bool NewData(iActivity _act)
-        { 
-            userTable.InsertOne(_act);
-            return true;
+       
+        public static void Update(iActivity _act)
+        {
+            if (string.IsNullOrEmpty(_act.ID.ToString()))
+            {
+                // var table = userTable.sort(_id: -1).limit(1).pretty();
+                userTable.InsertOne(_act);
+            }
+            else {
+               // userTable.UpdateOne(_act);
+            }
+                
         }
     }
 }

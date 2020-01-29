@@ -1,5 +1,6 @@
 ﻿using DrinkAndDrink.Class;
 using DrinkAndDrink.Class.Activity;
+using DrinkAndDrink.DataBase;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -37,7 +38,11 @@ namespace DrinkAndDrink.OrderWindow
             get { return RealTimeIterator().ToList(); }
         }
         public ICommand UpdateActivityCommand {
-            get { return new RelayCommand(() =>  LineNotifyBot.GetUserCode()); }
+            get { return new RelayCommand(() => {
+                //LineNotifyBot.GetUserCode();
+                ActivityCollection.Update(ActivityItem);
+            });
+            }
         }
         public OrderVIewModel() {
             

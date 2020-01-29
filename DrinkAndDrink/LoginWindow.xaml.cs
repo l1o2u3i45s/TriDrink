@@ -25,6 +25,7 @@ namespace DrinkAndDrink
         public LoginWindow()
         {
             InitializeComponent();
+            txtAccount.Focus();
         } 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
