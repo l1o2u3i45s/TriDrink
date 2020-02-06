@@ -20,19 +20,8 @@
             </Style.Triggers>
         </Style>
     </Window.Style>
-    <Window.Resources>
-        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                              Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <Grid >
-        <TabControl SelectionChanged="Selector_OnSelectionChanged">
+        <TabControl>
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -71,8 +60,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Content="姓名" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                    <TextBox Name="txtNameRegister" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" 
-                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                    <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" >
                         <TextBox.Text>
                             <Binding Path="CurrentUser.Name" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
@@ -82,8 +70,7 @@
                         </TextBox.Text>
                     </TextBox>
                     <Label Content="帳號(工號)" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                    <TextBox Name="txtAccountRegister" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" 
-                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                    <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" >
                         <TextBox.Text>
                             <Binding Path="CurrentUser.Account" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
@@ -94,8 +81,7 @@
                         </TextBox.Text>
                     </TextBox>
                     <Label Content="密碼" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                    <TextBox Name="txtPasswordRegister" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
-                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                    <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150">
                         <TextBox.Text>
                             <Binding Path="CurrentUser.PassWord" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
@@ -119,8 +105,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Content="帳號(工號)" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                    <TextBox Name="txtAccountLogin" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
-                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                    <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150">
                         <TextBox.Text>
                             <Binding Path="CurrentUser.Account" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
@@ -131,8 +116,7 @@
                         </TextBox.Text>
                     </TextBox>
                     <Label Content="密碼" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                    <TextBox Name="txtPasswordLogin" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
-                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                    <TextBox Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="150">
                         <TextBox.Text>
                             <Binding Path="CurrentUser.PassWord" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
