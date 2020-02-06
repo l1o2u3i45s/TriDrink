@@ -3,17 +3,11 @@ using DrinkAndDrink.Class.User;
 using DrinkAndDrink.DataBase;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Google.Cloud.Firestore;
 
 namespace DrinkAndDrink
 {
@@ -25,31 +19,30 @@ namespace DrinkAndDrink
         public LoginWindow()
         {
             InitializeComponent();
-            txtAccount.Focus();
         } 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            User loginUser = new User() {Account= txtAccount.Text,PassWord = txtPassword.Text };
-            if (UserCollection.Login(loginUser)) {
-                Hide(); 
-                ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
-                new MainWindow() { Owner = this }.Show();
-            } 
-            else
-                MessageBox.Show("登入失敗~");
+            //User loginUser = new User() {Account= txtAccountLogin.Text,PassWord = txtPasswordLogin.Text };
+            //if (UserCollection.Login(loginUser)) {
+            //    Hide(); 
+            //    ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
+            //    new MainWindow() { Owner = this }.Show();
+            //} 
+            //else
+            //    MessageBox.Show("登入失敗~");
         }
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-            User loginUser = new User() { Account = txtAccount.Text, PassWord = txtPassword.Text };
-            if (UserCollection.Register(loginUser))
-            {
-                Hide();
-                ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
-                new MainWindow() { Owner = this }.Show();
-            }
-            else
-                MessageBox.Show("註冊失敗~已經辦過帳號惹~");
+            //var loginUser = new User { Account = txtAccountRegister.Text, PassWord = txtPasswordRegister.Text };
+            //if (UserCollection.Register(loginUser))
+            //{
+            //    Hide();
+            //    ServiceLocator.Current.GetInstance<MainViewModel>().CurrentUser = loginUser;
+            //    new MainWindow() { Owner = this }.Show();
+            //}
+            //else
+            //    MessageBox.Show("註冊失敗~已經辦過帳號惹~");
         }
     }
 }

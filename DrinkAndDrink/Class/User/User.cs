@@ -1,16 +1,31 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GalaSoft.MvvmLight;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DrinkAndDrink.Class.User
 {
     [BsonIgnoreExtraElements]
-    public class User
+    public class User : ObservableObject
     {
-        public string Account { get; set; }
-        public string PassWord { get; set; } 
+        public User(){}
+        private string account;
+        public string Account
+        {
+            get => account;
+            set => Set(()=>Account, ref account, value);
+        }
+
+        private string passWord;
+        public string PassWord
+        {
+            get => passWord; 
+            set => Set(()=>PassWord, ref passWord, value);
+        }
+
+        private string name;
+        public string Name
+        {
+            get => name; 
+            set => Set(()=>Name, ref name, value);
+        }
     }
 }

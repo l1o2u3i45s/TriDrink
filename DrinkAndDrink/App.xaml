@@ -12,7 +12,13 @@
                 <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <locator:ViewModelLocator x:Key="Locator"/>
+            <ControlTemplate x:Key="validationTemplate">
+                <DockPanel>
+                    <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                    <AdornedElementPlaceholder/>
+                </DockPanel>
+            </ControlTemplate>
         </ResourceDictionary>
-        
     </Application.Resources>
+    
 </Application>

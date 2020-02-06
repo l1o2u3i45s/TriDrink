@@ -43,7 +43,7 @@ namespace DrinkAndDrink.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-
+            SimpleIoc.Default.Register<LoginViewModel>(); 
             SimpleIoc.Default.Register<MainViewModel>(); 
             SimpleIoc.Default.Register<OrderVIewModel>(); 
         }
@@ -60,6 +60,13 @@ namespace DrinkAndDrink.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<OrderVIewModel>();
+            }
+        }
+        public LoginViewModel Login
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
         }
         public static void Cleanup()

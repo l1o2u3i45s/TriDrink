@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tridrinksdb",
+  "private_key_id": "49a4d2526766897cb9c48fedb4d99631d4ecbb5e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDKa4jfVPMiEXfI\nH4mKXi9+WaHR1jcEh4PAvC5kKix3+lUFqLNUaUZxnTM3HPtv5oFKXvRIl4lcBlGq\n64qbEx8tfL/lC2p7hS6ftPUXb/yG1OA3fwIraYM0udI0yFeYUzokzCqOJGb4gx9P\neqda9Dputx8fkG822iIJmlQGgxpdiIlS4JNn+mc4h25rhT0/q32LXPE2A/pAEpNg\nKiGFZ6zj8J5RM6JIB1v7idz+7VJffOeX4qkrHNkfeZzfCsra+78JM0/XsiJUkvbf\nR7/yqD17m609XnziCDEF3P5ZOY5o7GexK7t+cjIhPCoLZnEYeyJ8wwmCAYRzkZoC\n8pvFoWdbAgMBAAECggEAU9zZiC2ZzbOO/MqUIU+EPcTE1jr58FZ0r5VHYxhV9B8y\nunV6Vq6HEOsgHOVVBrdpOXa9npWpwwabL0UG19jEQgQ9PJfONf6nomNGZ79t0C7B\n9jwYmgPM6DtUa6nVILbakARGXT2Xq74narZWP8iPrO8RZfJhIUiecXwO8+O9OKJr\nlSdct1ba2DXbPQR99RpxRo+v2yUGbdnK9piGfZPT2EuHxbVpGd9OlzDo4Y0oSMCC\nuiW5bVX/TrgaHB6blp9svwDJG5rgQ+GUr8H+Eimu+2fZj8co/LtIExK1E94jnm54\nMWvuTs+DbiTlHNUWRvsZHI0P1HLYKqnfVtORUdEQgQKBgQD1vRjkqu8Io1mlhC2c\nFT/6VG4tGe+3oCgMAzSgAD3HxBW4kURHVw8ZoZPHZCZ4rmVQDtqfxxU06hPI0vVd\n4rPxjxB7hxfEK4umjHx2pI10fYWguUzTJhZg64d9XSlSs0wwDWwcaaNk7MUPXEhW\nXrERKn9Wioy8+avHlCkBEfTTZwKBgQDS316E9sm6KQJ1AGL9sypvJDe4Fw4PdTjj\n1U7W2KPFoeXCIuwMM7gQ9fMRDkY6yUv7Jkr7e7gsPB3JmTOGHPwxW4ku3I7xGq4T\n+BFNpAS/5K2cW+9WH8UdWxmJrBSJlSwl1wAJ75E7Wcx1B5KvgVtW8ajOQc1c2HbZ\nhC5y+fMn7QKBgA/3Q0DIIlOrWU25ssTrVIbNKYNgpgSGMVPmeWrT2S+7e7XMKmWA\nMIj3yIQx65X3rrlu3aF369bORo7Ltglti0dshiOgeVjTg3VEt2l184LYDPCOWYF2\nfgm6A8mPXfnzkEWm+Zk2+9i40WzYEBMcf+CfpDpZMh+tEQ4cgDWDlyaNAoGBAIFv\nUBIndU1KTNLKaPi2l85emcDqjdvZJRFb5iekFGqD5IaUbvVSbaIjhY4rh9ofov7G\n03Gn0DV+tP4AhorEkdwuBnd4NFkz+jQRqXVRvwSWdiYqnC7uE0zglT1XHcgRg2a6\noLB4l1mp1gDjpBsMOKeWb/oik85wpAsBwo0adTFFAoGAfY5easUXvHCpmst/hhyc\nsx4jdyKR5jtvkbyaHRGy3xUU/wQKkWUyR0kueNsx72Ag4PhBG9fWM4PNmHQs3mAw\n8OjQZ8LF13pJ+WWyMz+fBuZ4LMgJEjrt79f1atyZ4RCz4ZOLVrp1vw9A5jFK7W+F\nfKBzyUXab7XYDoX2uC42LVI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tridrinksadmin@tridrinksdb.iam.gserviceaccount.com",
+  "client_id": "108174549157150261883",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tridrinksadmin%40tridrinksdb.iam.gserviceaccount.com"
+}

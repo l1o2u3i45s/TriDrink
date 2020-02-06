@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FireSharp.Config;
+using FireSharp.Interfaces;
 
 namespace DrinkAndDrink.DataBase
 {
@@ -20,6 +22,7 @@ namespace DrinkAndDrink.DataBase
 
             return userTable.Find(filter).ToList().Count > 0 ;
         }
+
         public static bool Register(User _user)
         {
             var filter = Builders<User>.Filter.Eq(u => u.Account, _user.Account);

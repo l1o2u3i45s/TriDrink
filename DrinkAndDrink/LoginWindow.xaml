@@ -4,24 +4,146 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DrinkAndDrink"
+        xmlns:validationRule="clr-namespace:DrinkAndDrink.ValidationRule"
         mc:Ignorable="d" Background="{StaticResource AccordionBackgroundBrush}"
+        DataContext="{Binding Login, Source={StaticResource Locator}}"
         Title="最喜歡喝飲料惹" Height="300" Width="300" WindowStartupLocation="CenterScreen">
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label Content="帳號" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Name="txtAccount" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
-        <Label Content="密碼" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Name="txtPassword" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
-        <Button Grid.Row="2"   Content="註冊" Click="ButtonRegister_Click"/>
-        <Button  Grid.Row="2" Grid.Column="1"   Content="登入" Click="ButtonLogin_Click"/>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LoginSuccess,UpdateSourceTrigger=PropertyChanged}" Value="False">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding LoginSuccess,UpdateSourceTrigger=PropertyChanged}" Value="True">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
+    <Window.Resources>
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                              Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <TabControl SelectionChanged="Selector_OnSelectionChanged">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"
+                                                      ContentSource="Header"
+                                                      Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="DimGray" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="{StaticResource AccordionBackgroundBrush}"  />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="註冊" Foreground="#FFBABABA">
+                <Grid Background="{StaticResource AccordionBackgroundBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="姓名" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                    <TextBox Name="txtNameRegister" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" 
+                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                        <TextBox.Text>
+                            <Binding Path="CurrentUser.Name" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <validationRule:EmptyStringRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Content="帳號(工號)" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                    <TextBox Name="txtAccountRegister" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" 
+                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                        <TextBox.Text>
+                            <Binding Path="CurrentUser.Account" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <validationRule:EmptyStringRule/>
+                                    <validationRule:TRIEmployeeIDRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Content="密碼" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                    <TextBox Name="txtPasswordRegister" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
+                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                        <TextBox.Text>
+                            <Binding Path="CurrentUser.PassWord" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <validationRule:EmptyStringRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Button Grid.Row="3" Content="註冊" Grid.ColumnSpan="2" Grid.Column="0" Click="ButtonRegister_Click" Background="Red" Command="{Binding Register}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="登入" Foreground="#FFBABABA">
+                <Grid Background="{StaticResource AccordionBackgroundBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="帳號(工號)" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                    <TextBox Name="txtAccountLogin" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
+                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                        <TextBox.Text>
+                            <Binding Path="CurrentUser.Account" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <validationRule:EmptyStringRule/>
+                                    <validationRule:TRIEmployeeIDRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Content="密碼" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                    <TextBox Name="txtPasswordLogin" Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"
+                             Validation.Error="ValidationError" Binding.TargetUpdated="BindingTargetUpdated" Binding.SourceUpdated="BindingSourceUpdated">
+                        <TextBox.Text>
+                            <Binding Path="CurrentUser.PassWord" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <validationRule:EmptyStringRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="登入" Click="ButtonLogin_Click" Command="{Binding Login}"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
