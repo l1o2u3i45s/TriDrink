@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DrinkAndDrink.Class.Item;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,12 +11,13 @@ namespace DrinkAndDrink.Class.Shop
     public static class ShopFactory
     {
         public static IEnumerable<iShop> GetAllDrinkShopData() {
-            string menupath = @"../../../Class/Shop/Menu";
-            foreach (string filepath in Directory.GetFiles(menupath)) {
-                var a = JsonConvert.DeserializeObject<DrinkShop>(File.ReadAllText(filepath));
-                yield return null;
-                //yield return new DrinkShop(JsonConvert.DeserializeObject(File.ReadAllText(filepath)), filepath);
-            }
+
+            yield return GetKanChingLongShopData();
+        }
+        public static DrinkShop GetKanChingLongShopData() {
+            DrinkShop shop = new DrinkShop() {ShopKind = ShopEnum.KanChingLong,Name="康青龍", Phone="5555",Address="55" };
+            shop.Items.Add(new Drink() { Name="珍珠奶茶",Price=50 });
+            return shop;
         }
     }
 }

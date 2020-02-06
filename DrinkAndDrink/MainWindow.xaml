@@ -29,8 +29,13 @@
                 <Button Command="{Binding OpenOrderWindowCommand}" CommandParameter=""
                         Content="+" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,2"/>
             </DockPanel>
-            <DataGrid Grid.Row="1"   Background="{StaticResource Brush04}">
-                 
+            <DataGrid Grid.Row="1"   Background="{StaticResource Brush04}" SelectedItem="{Binding CurrentActivity}" ItemsSource="{Binding ActivityCollection}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="100" Header="店名" Binding="{Binding ShopName}"/>
+                    <DataGridTextColumn Width="100" Header="舉辦人" Binding="{Binding Creator.Account}"/>
+                    <DataGridTextColumn Width="100" Header="截止時間" Binding="{Binding DueTime}"/>
+                </DataGrid.Columns>
+               
             </DataGrid>
         </Grid>
 
@@ -51,6 +56,7 @@
             </Grid.RowDefinitions>
             <StackPanel>
                 <Label Content="菜單" FontSize="25" Foreground="Black" />
+                
             </StackPanel>
             <DataGrid Grid.Row="1" ItemsSource="{Binding ShopCollection}" />
         </Grid>

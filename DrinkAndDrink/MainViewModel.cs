@@ -24,16 +24,20 @@ namespace DrinkAndDrink
         public User CurrentUser {
             get { return currentUser; }
             set { Set(() => CurrentUser, ref currentUser, value); }
-        }
-        private ObservableCollection<iActivity> activityCollection;
-        public ObservableCollection<iActivity> ActivityCollection  
-        {
-            get { return activityCollection; }
-            set { Set(() => ActivityCollection, ref activityCollection, value); }
         } 
+        public List<iActivity> ActivityCollection
+        {
+            get { return ActivityFactory.GetAllActivity(); }
+        }  
         public List<iShop> ShopCollection
         {
             get { return ShopFactory.GetAllDrinkShopData().ToList(); } 
+        }
+        private iActivity currentActivity;
+        public iActivity CurrentActivity
+        {
+            get { return currentActivity; }
+            set { Set(() => CurrentActivity, ref currentActivity, value); }
         }
         public ICommand OpenOrderWindowCommand
         {
@@ -48,7 +52,7 @@ namespace DrinkAndDrink
             }
         }
         public MainViewModel( )  {
-             
+            DrinkAndDrink.DataBase.ActivityCollection.Init();
         }
         private void InitData() {
             
